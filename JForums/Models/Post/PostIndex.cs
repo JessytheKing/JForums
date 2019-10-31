@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using JForums.Models.Reply;
 
 namespace JForums.Models.Post
 {
@@ -12,8 +13,10 @@ namespace JForums.Models.Post
         public string AuthorImageUrl { get; set; }
         public int AuthorRating { get; set; }
         public DateTime Created { get; set; }
-        public string PostCount { get; set; }
+        public string PostContent { get; set; }
+        public int ForumId { get; set; }
 
+        public string  ForumName { get; set; }
         public IEnumerable<PostReply> Replies { get; set; }
     }
 }

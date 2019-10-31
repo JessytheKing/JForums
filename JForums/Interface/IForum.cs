@@ -9,7 +9,7 @@ namespace JForums.Interface
     {
         SharedModels.Forums GetById(int id);
         IEnumerable<SharedModels.Forums> GetAll();
-        IEnumerable<ApplicationUser> GetApplicationUsers();
+        IEnumerable<SApplicationUser> GetApplicationUsers();
 
         Task Create(SharedModels.Forums forum);
         Task Delete(int id);

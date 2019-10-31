@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace JForums.SharedModels
 {
-    public class ApplicationUser : IdentityUser
+    public class SApplicationUser : IdentityUser
     {       
         public string UserDescription { get; set; }
         public string ProfileImageUrl { get; set; }

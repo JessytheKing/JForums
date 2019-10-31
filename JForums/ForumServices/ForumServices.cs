@@ -33,13 +33,13 @@ namespace JForums.ForumServices
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<ApplicationUser> GetActiveUsers(int forumId)
+        public IEnumerable<SApplicationUser> GetActiveUsers(int forumId)
         {
             var posts = GetById(forumId).Post;
 
             if (posts == null || !posts.Any())
             {
-                return new List<ApplicationUser>();
+                return new List<SApplicationUser>();
             }
 
             return _postService.GetAllUsers(posts);
@@ -66,13 +66,13 @@ namespace JForums.ForumServices
 
             if (forum.Post == null)
             {
-                forum.Post = new List<Post>(); 
+                forum.Post = new List<SPost>(); 
             }
 
             return forum; 
         }
 
-        public Post GetLastestPost(int forumId)
+        public SPost GetLastestPost(int forumId)
         {
             var posts = GetById(forumId).Post;
 
@@ -82,7 +82,7 @@ namespace JForums.ForumServices
                     .OrderByDescending(post => post.Created)
                     .FirstOrDefault(); 
             }
-            return new Post();
+            return new SPost();
         }
 
         public bool HasRecentPost(int id)
@@ -98,7 +98,7 @@ namespace JForums.ForumServices
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<Post> GetFilterPosts(string searchQuery)
+        public IEnumerable<SPost> GetFilterPosts(string searchQuery)
         {
             return _postService.GetFilteredPosts(searchQuery);
         }
@@ -111,7 +111,7 @@ namespace JForums.ForumServices
             await _context.SaveChangesAsync(); 
         }
 
-        public IEnumerable<Post> GetFilterPosts(int forumId, string searchQuery)
+        public IEnumerable<SPost> GetFilterPosts(int forumId, string searchQuery)
         {
             if (forumId == 0)
             {

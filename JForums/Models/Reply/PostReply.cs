@@ -14,11 +14,11 @@ namespace JForums.Models.Reply
         //public bool IsAuthorAdmin { get; set; }
 
         public DateTime Date { get; set; }
-        public string ReplyCount { get; set; }
+        public string ReplyContent { get; set; }
 
         public int PostId { get; set; }
-        //public string PostTitle { get; set; }
-        //public string PostContent { get; set; }
+        public string PostTitle { get; set; }
+        public string PostContent { get; set; }
 
         //public string ForumName { get; set; }
         //public string ForumImageUrl { get; set; }

@@ -6,16 +6,16 @@ namespace JForums.Interface
 {
     public interface IPost
     {
-        Post GetById(int id);
-        IEnumerable<Post> GetAll();
-        IEnumerable<Post> GetAllUsers(IEnumerable<Post> posts);
-        IEnumerable<Post> GetPostsByForum(int id);
-        IEnumerable<Post> GetFilteredPosts(string searchQuery);
+        SPost GetById(int id);
+        IEnumerable<SPost> GetAll();
+        IEnumerable<SPost> GetAllUsers(IEnumerable<SPost> posts);
+        IEnumerable<SPost> GetPostsByForum(int id);
+        IEnumerable<SPost> GetFilteredPosts(string searchQuery);
 
-        Task Add(Post post);
+        Task Add(SPost post);
         Task Delete(int id);
         Task EditPostContent(int id, string newContent);
-        Task AddReply(PostReply reply);
+        Task AddReply(SPostReply reply);
 
     }
 }

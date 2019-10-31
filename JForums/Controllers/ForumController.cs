@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using JForums.Interface;
+using JForums.Models.Forums;
+using JForums.Models.Post;
+using JForums.SharedModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JForums.Controllers
 {
@@ -14,7 +19,7 @@ namespace JForums.Controllers
         public IActionResult Index()
         {
             var forums = _forumService.GetAll()
-                .Select(forum => new ForumsListing
+                .Select(forum => new ForumListing
             {
                 Id = forum.Id,
                 Name = forum.Title,
@@ -30,15 +35,15 @@ namespace JForums.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
-            var posts = forum.Posts;
+            var posts = forum.Post;
 
-            var postListing = posts.Select(post => new PostListingModel
+            var postListing = posts.Select(post => new PostListing
             {
                 Id = post.Id,
                 AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
                 Title = post.Title,
-                DatePosted = post.Create.ToString(),
+                DatedPosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),
                 Forum = BuildForumListing(post)
 
@@ -46,7 +51,7 @@ namespace JForums.Controllers
 
             var model = new ForumTopic
             {
-                Post = postListing,
+                Posts = postListing,
                 Forum = BuildForumListing(forum)
 
             };
@@ -54,17 +59,17 @@ namespace JForums.Controllers
             return View(model);
         }
 
-        private ForumsListing BuildForumListing(Post post)
+        private ForumListing BuildForumListing(SPost post)
         {
                 var forum = post.Forums;
                 return BuildForumListing(forum);
         }
 
         //Change Name of EntitiesModel 
-        private ForumsListing BuildForumListing(SharedModels.Forums forum)
+        private ForumListing BuildForumListing(SharedModels.Forums forum)
         {
 
-            return new ForumsListing
+            return new ForumListing
             {
                 Id = forum.Id,
                 Name = forum.Title,

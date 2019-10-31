@@ -11,6 +11,6 @@ namespace JForums.SharedModels
         public DateTime Created { get; set; }
         public string ImageUrl { get; set; }
 
-        public IEnumerable<Post> Post { get; set; }
+        public IEnumerable<SPost> Post { get; set; }
     }
 }

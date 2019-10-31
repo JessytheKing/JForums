@@ -2,13 +2,13 @@
 
 namespace JForums.SharedModels
 {
-    public class PostReply
+    public class SPostReply
     {
 
         public int Id { get; set; }
         public string Content { get; set; }
         public DateTime Created { get; set; }
-        public virtual ApplicationUser User { get; set; }
-        public virtual Post Post { get; set; }
+        public virtual SApplicationUser User { get; set; }
+        public virtual SPost Post { get; set; }
     }
 }
